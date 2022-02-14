@@ -4,7 +4,6 @@
       v-for="(item, index) in dockerList"
       :key="item.icon"
       :class="{ docker__item: true, 'docker__item--active': index === 0 }"
-      class="docker__item docker__item--active"
     >
       <div class="iconfont" v-html="item.icon" />
       <div class="docker__item__title">{{ item.title }}</div>
