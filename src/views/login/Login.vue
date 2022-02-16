@@ -19,7 +19,7 @@
         <span class="login__links__register">立即注册</span>
       </div>
       <div class="login__body__button">
-        <button>登录</button>
+        <button @click="handleLogin">登录</button>
       </div>
     </div>
     <div class="login__footer">
@@ -29,8 +29,17 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
 export default {
   name: 'Login',
+  setup() {
+    const router = useRouter()
+    const handleLogin = () => {
+      localStorage.isLogin = true
+      router.push({ name: 'Home' })
+    }
+    return { handleLogin }
+  },
 }
 </script>
 
