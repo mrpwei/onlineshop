@@ -21,6 +21,15 @@ const routes = [
       isLogin ? next({ name: 'Home' }) : next()
     },
   },
+  {
+    path: '/register',
+    name: 'Register',
+    component: () => import('../views/register/Register.vue'),
+    beforeEnter(to, from, next) {
+      const { isLogin } = localStorage
+      isLogin ? next({ name: 'Home' }) : next()
+    },
+  },
 ]
 
 const router = createRouter({
@@ -30,7 +39,9 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const { isLogin } = localStorage
-  isLogin || to.name === 'Login' ? next() : next({ name: 'Login' })
+  const { name } = to
+  const isLoginOrRegister = name === 'Login' || name === 'Register'
+  isLogin || isLoginOrRegister ? next() : next({ name: 'Login' })
 })
 
 export default router

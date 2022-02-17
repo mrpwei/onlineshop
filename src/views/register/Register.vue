@@ -7,21 +7,23 @@
     <div class="login__body">
       <h1 class="login__body__avatar">mrpwei</h1>
       <div class="login__body__desc">登录账号以享受更多服务</div>
-      <div class="login__body__form">密码登录</div>
+      <div class="login__body__form">注册账号</div>
       <div class="login__body__input">
         <input type="text" placeholder="请输入用户名/手机号" />
       </div>
       <div class="login__body__input">
         <input type="password" placeholder="请输入密码" />
       </div>
+      <div class="login__body__input">
+        <input type="password" placeholder="请再次输入密码" />
+      </div>
       <div class="login__body__links">
-        <span class="login__links__forget">忘记密码</span> |
-        <span class="login__links__register" @click="handleRegisterClick"
-          >立即注册</span
+        <span class="login__links__forget" @click="handleLoginClick"
+          >已有账号，点击登录</span
         >
       </div>
       <div class="login__body__button">
-        <button @click="handleLogin">登录</button>
+        <button @click="handleLogin">立即注册</button>
       </div>
     </div>
     <div class="login__footer">
@@ -33,17 +35,13 @@
 <script>
 import { useRouter } from 'vue-router'
 export default {
-  name: 'Login',
+  name: 'Register',
   setup() {
     const router = useRouter()
-    const handleLogin = () => {
-      localStorage.isLogin = true
-      router.push({ name: 'Home' })
+    const handleLoginClick = () => {
+      router.push({ name: 'Login' })
     }
-    const handleRegisterClick = () => {
-      router.push({ name: 'Register' })
-    }
-    return { handleLogin, handleRegisterClick }
+    return { handleLoginClick }
   },
 }
 </script>
